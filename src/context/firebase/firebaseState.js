@@ -4,6 +4,8 @@ import {GET_PRODUCTS_SUCCESS} from '../../../types';
 
 import FirebaseContext from './firebaseContext';
 import FirebaseReducer from './firebaseReducer';
+// lodash para
+import _ from 'lodash';
 
 const FirebaseState = props => {
   // crear uns atate inicial
@@ -30,6 +32,10 @@ const FirebaseState = props => {
           ...doc.data(),
         };
       });
+      // con let puedo acceder desde fuera de la funcion de la
+      // ordenar por categtoria con lodash
+      platillos = _.sortBy(platillos, 'categoria');
+
       // console.log('platillos', platillos);
       dispatch({
         type: GET_PRODUCTS_SUCCESS,
