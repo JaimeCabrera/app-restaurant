@@ -6,6 +6,7 @@
 //   messagingSenderId: '140978050868',
 //   appId: '1:140978050868:web:d19988cd3acfcd33457761',
 // };
+// esto no se va
 const firebaseConfig = {
   apiKey: 'AIzaSyCiX-BYgjMPXUayQVOWzUq6-wKaFYmxBaw',
   authDomain: 'restaurant-f44fc.firebaseapp.com',

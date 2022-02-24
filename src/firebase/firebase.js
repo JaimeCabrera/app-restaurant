@@ -13,7 +13,6 @@ import {getStorage} from 'firebase/storage';
 import firebaseConfig from './config';
 
 const firebase = initializeApp(firebaseConfig);
-
 const db = getFirestore();
 const storage = getStorage(firebase);
 

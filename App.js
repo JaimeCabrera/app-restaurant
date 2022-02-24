@@ -11,8 +11,8 @@ import {FormDishScreen} from './src/screens/FormDishScreen';
 import {SummaryOrderScreen} from './src/screens/SummaryOrderScreen';
 import {ProgressOrderScreen} from './src/screens/ProgressOrderScreen';
 // context
-import OrdersState from './src/context/orders/ordersState';
 import FirebaseState from './src/context/firebase/firebaseState';
+import OrdersState from './src/context/orders/ordersState';
 // react paper
 import {Provider as PaperProvider} from 'react-native-paper';
 
@@ -30,7 +30,7 @@ const App = () => {
                 //   backgroundColor: '#F1C40F',
                 // },
                 headerTitleStyle: {
-                  fontWeight: 'bold',
+                  fontWeight: '400',
                 },
                 headerTintColor: '#34495E',
               }}>
