@@ -1,2 +1,2 @@
 // state de productos
-export const GET_PRODUCTS = 'OBTENER_PRODUCTOS';
+export const GET_PRODUCTS_SUCCESS = 'OBTENER_PRODUCTOS_EXITO';

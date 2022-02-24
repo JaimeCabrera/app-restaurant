@@ -1,12 +1,11 @@
-import React, {useReducer, useState} from 'react';
+import React, {useReducer} from 'react';
 import {db, query, onSnapshot, where, collection} from '../../firebase';
-import {GET_PRODUCTS} from '../../../types';
+import {GET_PRODUCTS_SUCCESS} from '../../../types';
 
 import FirebaseContext from './firebaseContext';
 import FirebaseReducer from './firebaseReducer';
 
 const FirebaseState = props => {
-  const [tasks, setTasks] = useState([]);
   // crear uns atate inicial
   const initialState = {
     menu: [],
@@ -14,29 +13,56 @@ const FirebaseState = props => {
   // use reducer con dispatch para ejecutar las funciones
   const [state, dispatch] = useReducer(FirebaseReducer, initialState);
   // funcion que se ejecuta para traer los productos
+  // const getAllProducts = () => {
+  //   //para tener cambios en tiuempo real
+  //   // const platillosRef = collection(db, 'platillos');
+  //   // Create a query against the collection.
+
   const getAllProducts = () => {
-    dispatch({
-      type: GET_PRODUCTS,
-    });
-    //para tener cambios en tiuempo real
-    // const platillosRef = collection(db, 'platillos');
-    // Create a query against the collection.
     const q = query(
       collection(db, 'platillos'),
       where('existencia', '==', true),
     );
     onSnapshot(q, querySnapshot => {
-      setTasks(
-        querySnapshot.docs.map(doc => ({
+      let platillos = querySnapshot.docs.map(doc => {
+        return {
           id: doc.id,
-          data: doc.data(),
-        })),
-      );
+          ...doc.data(),
+        };
+      });
+      // console.log('platillos', platillos);
+      dispatch({
+        type: GET_PRODUCTS_SUCCESS,
+        payload: platillos,
+      });
     });
   };
 
-  console.log(tasks);
-
+  // const getAllProducts = () => {
+  //   //para tener cambios en tiuempo real
+  //   onSnapshot(
+  //     collection(db, 'platillos'),
+  //     snapshot => {
+  //       const platillos = snapshot.docs.map(doc => {
+  //         return {
+  //           id: doc.id,
+  //           ...doc.data(),
+  //         };
+  //       });
+  //       // console.log(platillos);
+  //       // alamacenar los resultado en el state
+  //       console.log('platillos', platillos);
+  //       dispatch({
+  //         type: GET_PRODUCTS_SUCCESS,
+  //         payload: platillos,
+  //       });
+  //       // console.log("Current data: ", snapshot.docs.map);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     },
+  //   );
+  // };
   // aca se deben pasar lo0s metodos de firebase para que esten en toda la app
   return (
     <FirebaseContext.Provider
