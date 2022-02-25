@@ -30,9 +30,9 @@ const App = () => {
                 //   backgroundColor: '#F1C40F',
                 // },
                 headerTitleStyle: {
-                  fontWeight: '400',
+                  fontWeight: '300',
                 },
-                headerTintColor: '#34495E',
+                headerTintColor: '#808B96',
               }}>
               <Stack.Screen
                 name="order-new"

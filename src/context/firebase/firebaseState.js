@@ -44,31 +44,6 @@ const FirebaseState = props => {
     });
   };
 
-  // const getAllProducts = () => {
-  //   //para tener cambios en tiuempo real
-  //   onSnapshot(
-  //     collection(db, 'platillos'),
-  //     snapshot => {
-  //       const platillos = snapshot.docs.map(doc => {
-  //         return {
-  //           id: doc.id,
-  //           ...doc.data(),
-  //         };
-  //       });
-  //       // console.log(platillos);
-  //       // alamacenar los resultado en el state
-  //       console.log('platillos', platillos);
-  //       dispatch({
-  //         type: GET_PRODUCTS_SUCCESS,
-  //         payload: platillos,
-  //       });
-  //       // console.log("Current data: ", snapshot.docs.map);
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     },
-  //   );
-  // };
   // aca se deben pasar lo0s metodos de firebase para que esten en toda la app
   return (
     <FirebaseContext.Provider

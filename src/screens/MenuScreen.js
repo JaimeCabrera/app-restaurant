@@ -1,12 +1,19 @@
 import React, {useContext, useEffect} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import FirebaseContext from '../context/firebase/firebaseContext';
 import {Avatar, Divider, List} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
 // import globalStyles from '../../styles/globalStyles';
+import FirebaseContext from '../context/firebase/firebaseContext';
+import OrdersContext from '../context/orders/ordersContext';
+
 // lodash para
 
 export const MenuScreen = () => {
+  // context de firebase
   const {getAllProducts, menu} = useContext(FirebaseContext);
+  // context de order
+  const {selectDish} = useContext(OrdersContext);
+  const navigation = useNavigation();
 
   useEffect(() => {
     getAllProducts();
@@ -14,6 +21,7 @@ export const MenuScreen = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // para ver los platillos agrupados por categoria
   const showHeading = (category, i) => {
     if (i > 0) {
       const categoriaAnterior = menu[i - 1].categoria;
@@ -27,6 +35,14 @@ export const MenuScreen = () => {
           </>
         );
       }
+    } else {
+      return (
+        <>
+          <Divider style={styles.divider} inset={false}>
+            <Text style={styles.textDivider}>{category}</Text>
+          </Divider>
+        </>
+      );
     }
   };
 
@@ -39,12 +55,18 @@ export const MenuScreen = () => {
           return (
             <>
               {showHeading(item.categoria, index)}
+
               <List.Item
                 style={styles.itemList}
                 title={item.nombre}
                 // titleNumberOfLines={1}
                 description={item.descripcion}
-                onPress={() => {}}
+                onPress={() => {
+                  // eliminar alguna propiedades del platillo
+                  const {existencia, ...dish2} = item;
+                  selectDish(dish2);
+                  navigation.navigate('dish-details');
+                }}
                 left={props => (
                   <Avatar.Image size={64} source={{uri: item.imagen}} />
                 )}
@@ -63,20 +85,20 @@ export const MenuScreen = () => {
 
 const styles = StyleSheet.create({
   content: {
-    marginVertical: 10,
+    marginVertical: 2,
   },
   divider: {
-    color: '#FDFEFE',
-    backgroundColor: '#FDFEFE',
+    color: '#F4D03F',
+    backgroundColor: '#D7DBDD',
     height: 30,
   },
   textDivider: {
     paddingLeft: 20,
     fontWeight: 'bold',
-    textTransform: 'uppercase',
+    textTransform: 'capitalize',
     marginTop: 6,
     fontSize: 16,
-    color: '#F1C40F',
+    color: '#B7950B',
   },
   itemList: {
     paddingHorizontal: 16,
