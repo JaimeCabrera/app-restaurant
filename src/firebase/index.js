@@ -8,6 +8,7 @@ import {
   collection,
   query,
   setDoc,
+  getDoc,
   addDoc,
   where,
 } from './firebase';
@@ -23,5 +24,6 @@ export {
   collection,
   query,
   addDoc,
+  getDoc,
   where,
 };

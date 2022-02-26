@@ -7,6 +7,7 @@ import {
   collection,
   setDoc,
   addDoc,
+  getDoc,
 } from '../../firebase';
 import {GET_PRODUCTS_SUCCESS} from '../../../types';
 
@@ -64,6 +65,7 @@ const FirebaseState = props => {
         collection,
         setDoc,
         addDoc,
+        getDoc,
         getAllProducts,
       }}>
       {props.children}

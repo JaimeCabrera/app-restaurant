@@ -97,7 +97,7 @@ export const SummaryOrderScreen = () => {
         renderItem={({item}) => {
           // console.log('este es el index', i);
           const uid = new Date().getTime();
-          console.log(uid);
+          // console.log(uid);
           return (
             <List.Item
               key={uid}
