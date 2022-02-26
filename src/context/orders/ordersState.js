@@ -1,5 +1,11 @@
 import React, {useReducer} from 'react';
-import {SELECT_PRODUCT, CONFIRM_ORDER_DISH, SHOW_SUMMARY} from '../../../types';
+import {
+  SELECT_PRODUCT,
+  CONFIRM_ORDER_DISH,
+  SHOW_SUMMARY,
+  DELETE_ITEM_ORDER,
+  ORDER_CONFIRMED,
+} from '../../../types';
 import OrderContext from './ordersContext';
 import OrdersReducer from './ordersReducer';
 
@@ -8,6 +14,7 @@ const OrdersState = props => {
     order: [],
     dish: null,
     total: 0,
+    idOrder: '',
   };
   const [state, dispatch] = useReducer(OrdersReducer, initialState);
 
@@ -33,6 +40,21 @@ const OrdersState = props => {
       payload: total,
     });
   };
+  // eliminar un articulo del carrito del
+  const deleteItemOrder = id => {
+    dispatch({
+      type: DELETE_ITEM_ORDER,
+      payload: id,
+    });
+  };
+  // pedido realizado
+  const orderConfirmed = id => {
+    dispatch({
+      type: ORDER_CONFIRMED,
+      payload: id,
+    });
+  };
+  // el return es lo que van a tener todos lo componentes
   return (
     <OrderContext.Provider
       value={{
@@ -43,6 +65,9 @@ const OrdersState = props => {
         saveOrder,
         total: state.total,
         showTotal,
+        deleteItemOrder,
+        orderConfirmed,
+        idOrder: state.idOrder,
       }}>
       {props.children}
     </OrderContext.Provider>

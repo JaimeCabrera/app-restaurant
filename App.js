@@ -15,6 +15,7 @@ import FirebaseState from './src/context/firebase/firebaseState';
 import OrdersState from './src/context/orders/ordersState';
 // react paper
 import {Provider as PaperProvider} from 'react-native-paper';
+import {ButtonSummary} from './src/components/ui/ButtonSummary';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,7 +43,10 @@ const App = () => {
               <Stack.Screen
                 name="menu"
                 component={MenuScreen}
-                options={{title: 'Menú'}}
+                options={{
+                  title: 'Menú',
+                  headerRight: props => <ButtonSummary />,
+                }}
               />
               <Stack.Screen
                 name="dish-details"

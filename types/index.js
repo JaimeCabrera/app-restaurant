@@ -6,3 +6,5 @@ export const SELECT_PRODUCT = 'SELECCIONAR_UN_PRODUCTO';
 export const CONFIRM_ORDER_DISH = 'CONFIRM_ORDER_DISH';
 // mostrar el resumen del pedido de productos
 export const SHOW_SUMMARY = 'SHOW_SUMMARY';
+export const DELETE_ITEM_ORDER = 'DELETE_ITEM_ORDER';
+export const ORDER_CONFIRMED = 'ORDER_CONFIRMED';

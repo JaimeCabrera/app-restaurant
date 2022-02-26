@@ -1,4 +1,10 @@
-import {CONFIRM_ORDER_DISH, SELECT_PRODUCT, SHOW_SUMMARY} from '../../../types';
+import {
+  CONFIRM_ORDER_DISH,
+  DELETE_ITEM_ORDER,
+  ORDER_CONFIRMED,
+  SELECT_PRODUCT,
+  SHOW_SUMMARY,
+} from '../../../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -17,6 +23,16 @@ export default (state, action) => {
       return {
         ...state,
         total: action.payload,
+      };
+    case DELETE_ITEM_ORDER:
+      return {
+        ...state,
+        order: state.order.filter(item => item.id !== action.payload),
+      };
+    case ORDER_CONFIRMED:
+      return {
+        ...state,
+        idOrder: action.payload,
       };
     default:
       return state;

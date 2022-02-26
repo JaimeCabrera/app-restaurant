@@ -7,6 +7,8 @@ import {
   onSnapshot,
   collection,
   query,
+  setDoc,
+  addDoc,
   where,
 } from './firebase';
 
@@ -15,9 +17,11 @@ export {
   db,
   storage,
   doc,
+  setDoc,
   getDocs,
   onSnapshot,
   collection,
   query,
+  addDoc,
   where,
 };

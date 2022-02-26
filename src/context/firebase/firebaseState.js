@@ -1,5 +1,13 @@
 import React, {useReducer} from 'react';
-import {db, query, onSnapshot, where, collection} from '../../firebase';
+import {
+  db,
+  query,
+  onSnapshot,
+  where,
+  collection,
+  setDoc,
+  addDoc,
+} from '../../firebase';
 import {GET_PRODUCTS_SUCCESS} from '../../../types';
 
 import FirebaseContext from './firebaseContext';
@@ -54,6 +62,8 @@ const FirebaseState = props => {
         onSnapshot,
         where,
         collection,
+        setDoc,
+        addDoc,
         getAllProducts,
       }}>
       {props.children}

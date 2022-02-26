@@ -7,6 +7,8 @@ import {
   collection,
   query,
   where,
+  setDoc,
+  addDoc,
 } from 'firebase/firestore';
 import {getStorage} from 'firebase/storage';
 
@@ -26,4 +28,6 @@ export {
   collection,
   query,
   where,
+  setDoc,
+  addDoc,
 };
